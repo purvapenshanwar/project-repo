@@ -58,7 +58,7 @@ li a{
 }
 .footer{
    padding: 15px;
-  margin-top: 120vh;
+  /* margin-top: 120vh; */
   background-color: grey;
   height: 20vh;
   color: white;
