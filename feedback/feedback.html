@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback & Grievance</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f9fafb;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    section {
+      padding: 60px 10%;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #0d6efd;
+    }
+
+    form {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #0d6efd;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      background: #0d6efd;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #094cc5;
+    }
+
+    .note {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FEEDBACK SECTION -->
+  <section id="feedback">
+    <h2>Feedback Form</h2>
+    <form action="#" method="post">
+      <div class="form-group">
+        <label for="feedback-name">Full Name</label>
+        <input type="text" id="feedback-name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="feedback-email">Email Address</label>
+        <input type="email" id="feedback-email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="feedback-rating">Rate Our Services</label>
+        <select id="feedback-rating" name="rating" required>
+          <option value="">Select Rating</option>
+          <option value="5">Excellent ★★★★★</option>
+          <option value="4">Very Good ★★★★☆</option>
+          <option value="3">Good ★★★☆☆</option>
+          <option value="2">Fair ★★☆☆☆</option>
+          <option value="1">Poor ★☆☆☆☆</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="feedback-message">Your Feedback</label>
+        <textarea id="feedback-message" name="message" placeholder="Share your thoughts..." required></textarea>
+      </div>
+
+      <button type="submit">Submit Feedback</button>
+      <p class="note">We appreciate your feedback to help us improve!</p>
+    </form>
+  </section>
+
+  <!-- GRIEVANCE SECTION -->
+  <section id="grievance">
+    <h2>Grievance Submission</h2>
+    <form action="#" method="post">
+      <div class="form-group">
+        <label for="grievance-name">Full Name</label>
+        <input type="text" id="grievance-name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="grievance-email">Email Address</label>
+        <input type="email" id="grievance-email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="grievance-type">Grievance Type</label>
+        <select id="grievance-type" name="type" required>
+          <option value="">Select Type</option>
+          <option value="service">Service Related</option>
+          <option value="staff">Staff Behavior</option>
+          <option value="technical">Technical Issue</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="grievance-details">Describe Your Issue</label>
+        <textarea id="grievance-details" name="details" placeholder="Please describe your issue clearly..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="grievance-file">Attach File (optional)</label>
+        <input type="file" id="grievance-file" name="file" accept=".jpg,.png,.pdf,.doc,.docx">
+      </div>
+
+      <button type="submit">Submit Grievance</button>
+      <p class="note">Your grievance will be reviewed confidentially and responded to as soon as possible.</p>
+    </form>
+  </section>
+
+</body>
+</html>

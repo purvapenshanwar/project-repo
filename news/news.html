@@ -2,167 +2,416 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily News and Broadcast</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="n_style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .n-nevbar {
+            background-color: rgb(158, 158, 229);
+        }
+
+        .n-heading {
+            height: 12vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+        }
+
+        .n-navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .n-navbar a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .n-navbar a:hover {
+            color: darkblue;
+        }
+
+        /* Menu Section */
+        .n-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px;
+            background-color: #e8e8ff;
+        }
+
+        select {
+            padding: 6px 10px;
+            border-radius: 5px;
+            border: 1px solid gray;
+        }
+
+        .search-panel {
+            position: relative;
+        }
+
+        .search-panel input {
+            padding: 6px 30px 6px 10px;
+            border-radius: 5px;
+            border: 1px solid gray;
+        }
+
+        .search-panel i {
+            position: absolute;
+            right: 10px;
+            top: 9px;
+            color: gray;
+        }
+
+        .pdf a {
+            background-color: #000;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .pdf a:hover {
+            background-color: #333;
+        }
+
+        .page-navigator a {
+            text-decoration: none;
+            color: black;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+
+        .page-navigator a:hover {
+            color: darkblue;
+        }
+
+        .calender input {
+            padding: 6px 10px;
+            border-radius: 5px;
+            border: 1px solid gray;
+        }
+
+        /* Layout */
+        .contains {
+            display: grid;
+            grid-template-columns: 20% 80%;
+            gap: 20px;
+            margin: 30px auto;
+            width: 90%;
+        }
+
+        aside {
+            background-color: #c0f0ff;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        aside .pages {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        aside img {
+            width: 100%;
+            border-radius: 10px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .news {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 35px;
+            background-color: brown;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* .details {
+            height: 100px;
+
+            padding: 20px;
+            text-align: justify;
+            font-size: 16px;
+        } */
+
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #212121;
+            color: white;
+            padding: 40px 20px 10px 20px;
+            margin-top: 40px;
+        }
+
+        footer .footer-col {
+            margin-bottom: 20px;
+        }
+
+        footer h5 {
+            text-transform: uppercase;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #f2f2f2;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li a {
+            text-decoration: none;
+            color: #ccc;
+            display: block;
+            margin: 5px 0;
+        }
+
+        footer ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid gray;
+            text-align: center;
+            padding-top: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .contains {
+                grid-template-columns: 1fr;
+            }
+
+            aside {
+                order: 2;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- header section starts from here -->
-    <div class="n-nevbar" style=" background-color: rgb(158, 158, 229);">
-
-        <div class="n-heading" style="height: 15vh; display: flex; justify-content: center; align-items: center;">
-            <h2>daily news and broadcast</h2>
+    <!-- Header Section -->
+    <div class="n-nevbar">
+        <div class="n-heading">
+            <h2>Daily News and Broadcast</h2>
         </div>
-        <div class="n-navbar" style=>
-            <ul class="n-links" style="list-style: none; display: flex; gap:20px;">
-                <li><a href="#" class="n-anchor">Daily Headlines</a></li>
-                <li><a href="#" class="n-anchor">Calender</a></li>
-                <li><a href="#" class="n-anchor">options</a></li>
 
+        <div class="n-navbar">
+            <ul>
+                <li><a href="#">Daily Headlines</a></li>
+                <li><a href="#">Calendar</a></li>
+                <li><a href="#">Options</a></li>
             </ul>
         </div>
-        <!-- header session 3rd div stsrts from here in which 1.dropdown menu for page 2.page navigator- 7.go to first page and last page 3. search panel 4.page pdf button 5.crop 6.calender -->
-        <div class="n-menu" style="display: flex;">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
+
+        <div class="n-menu">
+            <div class="dropdown">
+                <select id="pageDropdown" onchange="navigatePage()">
+                    <option value="p1">Page 1</option>
+                    <option value="p2">Page 2</option>
+                    <option value="p3">Page 3</option>
+                    <option value="p4">Page 4</option>
+                    <option value="p5">Page 5</option>
+                </select>
+            </div>
+
+            <div class="page-navigator">
+                <a href="#p1" onclick="showPage('p1')">1</a>|
+                <a href="#p2" onclick="showPage('p2')">2</a>|
+                <a href="#p3" onclick="showPage('p3')">3</a>|
+                <a href="#p4" onclick="showPage('p4')">4</a>|
+                <a href="#p5" onclick="showPage('p5')">5</a>
+            </div>
+
+            <div class="search-panel">
+                <input type="search" placeholder="Search news..." />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <div class="pdf">
+                <a href="sample.pdf" download>PDF</a>
+            </div>
+
+            <div class="crop">Crop</div>
+
+            <div class="calender">
+                <input type="date" />
+            </div>
         </div>
     </div>
 
-    <!-- 1. header ends
-     2. contains starts -->
-    <div class="contains" style="display: grid; grid-template-columns: 30% 70%; height: max-content; margin-top: 20px;">
-        <aside style="background-color: aqua; margin-right: 10px;">
-            A
-        </aside>
-        <div class="2">
-            <div class="news">
+    <!-- Content Section -->
+    <div class="contains">
+        <!-- Sidebar -->
+        <iframe src="aside.html" frameborder="0" height="100%" style="margin-right: 20px;"></iframe>
 
-                <h1 class="heading" style="text-align: center; font-size: 50px; background-color: brown;">Headinline
-                    Here</h1>
-                <div class="details" style="padding: 25px;">
-                    <p style="font-size: large;"> <span style="font-size: 50px;"> M</span>ain content of the news Lorem
-                        ipsum
-                        dolor sit amet consectetur
-                        adipisicing elit. Adipisci iure, quasi consequatur deleniti dicta unde iste. Animi quia quasi
-                        neque iste
-                        magnam vitae ab, quae nesciunt eos laboriosam eligendi impedit. Lorem ipsum dolor sit, amet
-                        consectetur
-                        adipisicing elit. Ullam molestias aut rerum doloribus unde a est corporis sint enim, harum odio
-                        similique nobis deleniti nesciunt quam magni sit magnam! Facere? lo</p>
+        <!-- Main Content -->
+        <div id="news-section" style="margin-left: 50px;">
+            <div id="p1" class="page-content active">
+                <div class="news">
+                    <h1 class="heading">Breaking News - Page 1</h1>
+                    <div class="details">
+                        <img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg" alt="page1"
+                            height="500px" width="100%" />
+                        <!-- <p>
+                            <span style="font-size: 40px; font-weight: bold;">M</span>ain content of the news page 1.
+                            Lorem ipsum
+                            dolor sit amet consectetur adipisicing elit. Quas neque nemo inventore laborum beatae, at
+                            odit rerum cum
+                            dolores!
+                        </p> -->
+                    </div>
                 </div>
             </div>
 
-            <!-- <div class="medias" style="height: 70vh; width: 60%; background-color: aqua;"> -->
-            <!-- <img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?cs=srgb&dl=cascade-clouds-cool-wallpaper-210186.jpg&fm=jpg "
-        alt="" height="400vh" style="display: block; margin: 0 auto;"> -->
-
-
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner"
-                    style="display: block; margin: 0 auto; width: 60%; height: auto; border-radius: 10px;">
-                    <div class="carousel-item active">
-                        <img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?cs=srgb&dl=cascade-clouds-cool-wallpaper-210186.jpg&fm=jpg"
-                            class="d-block w-100" alt="...">
+            <div id="p2" class="page-content">
+                <div class="news">
+                    <h1 class="heading">World Update - Page 2</h1>
+                    <div class="details">
+                        <img src="https://thewowstyle.com/wp-content/uploads/2015/01/nature-images-6.jpg" alt="page2"
+                            height="500px" width="100%" />
+                        <!-- <p>Today's latest global events and updates around the world...</p> -->
                     </div>
-                    <div class="carousel-item">
+                </div>
+            </div>
+
+            <div id="p3" class="page-content">
+                <div class="news">
+                    <h1 class="heading">Technology Today - Page 3</h1>
+                    <div class="details">
                         <img src="https://www.pixelstalk.net/wp-content/uploads/2016/08/Best-Nature-Full-HD-Images-For-Desktop.jpg"
-                            class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://thewowstyle.com/wp-content/uploads/2015/01/nature-images-6.jpg"
-                            class="d-block w-100" alt="...">
+                            alt="page3" height="500px" width="100%" />
+                        <!-- <p>Innovations in AI, software, and futuristic tech changing the world.</p> -->
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-
-
             </div>
-            <div class="details1">
-                <!-- style="padding: 25px;" -->
-                <p style="font-size: large;"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi minima
-                    delectus
-                    unde, esse, quibusdam quia
-                    debitis quos et eaque corrupti, odio vero sequi culpa deserunt incidunt dignissimos. Repudiandae,
-                    consequuntur
-                    obcaecati.
-                    Odit ut laboriosam unde autem harum id commodi veniam itaque vel possimus! Illo dignissimos dicta
-                    hic natus
-                    eveniet, commodi beatae soluta unde inventore perferendis corrupti nihil assumenda doloribus nobis
-                    enim?
-                    Commodi, sequi. Aspernatur facere vel veniam cupiditate officiis nemo, omnis voluptatum temporibus
-                    magnam
-                    distinctio adipisci dolorem saepe est labore. Reprehenderit doloribus alias sequi ex, est sint
-                    delectus
-                    soluta
-                    dignissimos excepturi!
-                    Minima delectus iusto ratione saepe consectetur doloremque, aliquid deleniti officia ad natus
-                    facilis porro
-                    quia
-                    veniam magnam incidunt accusantium commodi? Minus, vitae eveniet quod ex saepe est voluptatum
-                    laboriosam
-                    perspiciatis!
-                    Eum doloremque velit reprehenderit voluptates consectetur porro voluptatibus accusamus illum numquam
-                    temporibus!
-                    Nesciunt, eaque aperiam expedita labore eligendi minima in facilis ex sint sit voluptate ut
-                    blanditiis,
-                    explicabo soluta natus?
-                    Fugiat ut aspernatur at magni nam ipsam optio dolore iusto laborum, aut cum! Saepe ad facilis atque
-                    nobis
-                    tempora nihil alias quis fugiat ipsum earum assumenda officia amet, exercitationem aperiam.
-                    Voluptate harum quas est nihil vero iure sapiente quaerat qui blanditiis deserunt quia culpa minus
-                    accusantium
-                    dicta, quos, et quibusdam enim quae explicabo molestias quidem nulla ut aspernatur itaque! Officiis?
-                    Laboriosam, asperiores quibusdam itaque necessitatibus quia temporibus eius molestiae nihil suscipit
-                    fugit,
-                    esse
-                    nam consequatur fugiat reprehenderit aspernatur eligendi veniam sint. Aliquid doloremque laborum
-                    architecto
-                    illo
-                    sint. Vitae, consequuntur assumenda!
-                    Ducimus quod eum ex ipsum. Numquam molestias, consectetur voluptatum non tenetur sit rem officia
-                    reiciendis
-                    modi
-                    enim fugit accusantium facilis debitis porro pariatur et nisi, animi minus praesentium ad?
-                    Molestiae?
-                    Numquam maxime ipsa iure quaerat suscipit magnam eos, exercitationem dicta sunt a unde natus ipsam
-                    ipsum
-                    tempore, vero veritatis nobis totam aliquam fuga reiciendis sed ea recusandae, saepe debitis?
-                    Possimus.</p>
+
+            <div id="p4" class="page-content">
+                <div class="news">
+                    <h1 class="heading">Sports Highlights - Page 4</h1>
+                    <div class="details">
+                        <img src="https://wallpapercave.com/wp/wp4002950.jpg" alt="page4" height="500px" width="100%" />
+                        <!-- <p>Top sports stories, scores, and exclusive interviews with athletes.</p> -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="p5" class="page-content">
+                <div class="news">
+                    <h1 class="heading">Entertainment Buzz - Page 5</h1>
+                    <div class="details">
+                        <img src="https://wallpaperaccess.com/full/462773.jpg" alt="page5" height="500px"
+                            width="100%" />
+                        <!-- <p>Latest trends, celebrity news, and entertainment from around the world.</p> -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-3 footer-col">
+                    <h5>About Us</h5>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Mission & Vision</a></li>
+                        <li><a href="#">Team</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-col">
+                    <h5>Categories</h5>
+                    <ul>
+                        <li><a href="#">Politics</a></li>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Sports</a></li>
+                        <li><a href="#">Entertainment</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-col">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-col">
+                    <h5>Follow Us</h5>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                © 2025 Daily News | Developed by <strong>Purva Penshanwar</strong>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SPA Navigation Script -->
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll(".page-content").forEach((p) => p.classList.remove("active"));
+            document.getElementById(pageId).classList.add("active");
+        }
+
+        function navigatePage() {
+            const value = document.getElementById("pageDropdown").value;
+            showPage(value);
+        }
+    </script>
 </body>
 
 </html>
